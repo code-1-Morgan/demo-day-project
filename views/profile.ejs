@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <title>Life Dashboard</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1> Dashboard</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <!-- <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+            </div>
+        </div> -->
+        <div class="col-sm-4">
+          <h2>Sticky notes</h2>
+          <ul class="messages">
+          <% for(var i=0; i<messages.length; i++) {%>
+            <li class="message text-center">
+              <span><%= messages[i].date %></span>
+              <h3><%= messages[i].msg %></h3>
+              <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+            </li>
+          <% } %>
+          </ul>
+
+          <h4 class="stickyBtn">Add a note</h4>
+        <% if (user.local.email) { %>
+          <form class="stickyForm" action="/messages" method="POST">
+            <input type="datetime-local" name="date">
+            <input type="text" placeholder="message" name="msg">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %>
+        <section class ="scheduleSection col-sm-4">
+					<h2>Schedule</h2>
+					<div class="scheduleDiv">
+						<ul class="scheduleUl">
+							<li><h5 class="time">8:00 - 9:00</h5><h6 class="event"> Breakfast</h6></li>
+							<li><h5 class="time">9:00 - 10:00</h5><h6 class="event"> Gym</h6></li>
+							<li><h5 class="time">10:00 - 12:00</h5><h6 class="event"> Meeting</h5></li>
+							<li><h5 class="time">12:00 - 1:00</h5><h6 class="event"> Lunch</h6></li>
+							<li><h5 class="time">1:00 - 4:00</h5><h6 class="event"> Work on proposal</h5></li>
+							<li><h5 class="time">4:00 - 6:00</h5><h6 class="event"> Study</h6></li>
+							<li><h5 class="time">6:00 - 10:00</h5><h6 class="event"> Free Time</h6></li>
+						</ul>
+					</div>
+          <h2>Do Today</h2>
+					<div class="toDoDiv">
+						<div>
+							<input type="checkbox" id="todo1" name="todo1">
+							<label for="todo1">Grocery Shopping</label>
+						</div>
+						<div>
+							<input type="checkbox" id="todo2" name="todo2">
+							<label for="todo2">Homework</label>
+						</div>
+						<div>
+							<input type="checkbox" id="todo3" name="todo3">
+							<label for="todo3">Call mom</label>
+						</div>
+						<div>
+							<input type="checkbox" id="todo4" name="todo4">
+							<label for="todo4">Cook dinner</label>
+						</div>
+						<div>
+							<input type="checkbox" id="todo5" name="todo5">
+							<label for="todo5">Clean room</label>
+						</div>
+					</div>
+				</section>
+        <section class="topRightR col-sm">
+          <section class="topRightRFirst">
+            <div class="musicDiv">
+              <div class="musicImgDiv">
+                <img class=musicImg src="https://via.placeholder.com/80" alt="music">
+              </div>
+              <div class="musicText">
+                <h3>Now Playing</h3>
+                <span>Song Title</span>
+                <span>Artist</span>
+                <span>Album Name</span>
+              </div>
+            </div>
+          </section>
+          <section class="topRightRSecond">
+            <div class="timerDiv">
+              <h3>0:00:00</h3>
+              <button class="startTimerBtn">Start</button>
+              <button class="stopTimerBtn">Stop</button>
+            </div>
+          </section>
+        </section>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
